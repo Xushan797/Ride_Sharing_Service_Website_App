@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>main page</title>
+    {% csrf_token %}
+</head>
+<body>
+<h1>{{ request.session.user_name }}!  Welcome back!</h1>
+<h1>Driver status:{{ user.is_driver }}</h1>
+<p>
+    <a href="/logout/">logout</a>
+</p>
+<p></p>
+<p>
+    <a href="driver_edit/">driver register/edit</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="user_edit/">user information edit</a>
+</p><p>
+
+    <a href="open_ride/">open ride as an owner</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="search_ride/">search ride</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="driver_search_ride/">driver search ride</a>
+</p>
+<p>
+
+    <a href="my_rides_detail/">my ride orders</a>
+</p>
+<h2>Open Order List</h2>
+<p></p>
+<table class="table table-hover">
+	<thead>
+		<tr>
+            <th>number</th>
+			<th>order_id</th>
+			<th>destination</th>
+			<th>arrival_time</th>
+            <th>passenger_number:max 10</th>
+            <th>max_openseat</th>
+            <th>shared_status</th>
+            <th>special_request</th>
+            <th>special_vehicle_type</th>
+            <th>join</th>
+		</tr>
+	</thead>
+	<tbody>
+    {% for order in orders %}
+    {%widthratio order.passenger_number 1 -1 as number %} 
+		<tr>
+			<td>{{ forloop.counter }}</td>
+			<td>{{ order.id }}</td>
+			<td>{{ order.destination }}</td>
+            <td>{{ order.arrival_time }}</td>
+            <td>{{ order.passenger_number }}</td>
+            <td>{{number|add:10}}</td>
+            <td>{{ order.is_shared }}</td>
+            <td>{{ order.special_request }}</td>
+            <td>{{ order.special_vehicle_type }}</td>
+            <td><a href="{{ order.id }}/">view/join</a></td>
+		</tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+

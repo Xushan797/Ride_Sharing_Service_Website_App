@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>driver_edit</title>
+</head>
+<body>
+<h1>driver_edit</h1>
+<div class="container">
+    <div class="col">
+        <form class="form-driver" action="/user/driver_edit/" method="post">
+
+          {% csrf_token %}
+          {% if message %}
+            <div class="alert alert-warning">{{ message }}</div>
+          {% endif %}
+
+          <h3 class="text-center">welcome register/edit!</h3>
+
+          <div class="form-group">
+              {{ driver_form.driver_name.label_tag }} 
+               <p>former input: {{ user.full_name}}</p>
+              {{ driver_form.driver_name}}
+          </div>
+          <div class="form-group">
+              {{ driver_form.vehicle_type.label_tag }}, ex: suv,truck,sedan,luxury,minivan
+              <p>former input: {{ user.vehicle_type}}</p>
+              {{ driver_form.vehicle_type }}
+          </div>
+          <div class="form-group">
+              {{ driver_form.plate_num.label_tag }} 
+               <p>former input: {{ user.plate_num}}</p>
+              {{ driver_form.plate_num }}
+          </div>
+          <div class="form-group">
+              {{ driver_form.max_passenger.label_tag }} 
+              <p>max:10</p>
+               <p>former input: {{ user.max_passenger}}</p>
+              {{ driver_form.max_passenger }}
+          </div>
+          <div class="form-group">
+              {{ driver_form.special_info.label_tag }} if no special, leave it blank
+               <p>former input: {{ user.special_vehicle_info}}</p>
+              {{ driver_form.special_info }}
+          </div>
+
+          <div>
+              <button type="submit" class="btn btn-primary float-right">OK</button>
+          </div>
+        </form>
+        <a href="/user/">return to mainpage</a>&nbsp;&nbsp;
+    </div>
+</div> <!-- /container -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

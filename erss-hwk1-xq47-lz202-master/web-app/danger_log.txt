@@ -1,0 +1,32 @@
+ECE568 Project 1:Django Web-App, Ride Sharing Service
+
+Xushan Qing xq47, Lanxin Zhang lz202
+
+1/22:
+(1) When learning, render ,redirect and reverse is different. 
+(2) render use locals() to update
+
+1/24:
+(1) When implement the register function, and want to remind user by enter password two times
+
+
+1/26:
+(1) At first use user_id to load the page. If so, however, anyone who login can access other people's main page by using the index. Then we change to use session to get the user_id.
+(2) We move the user_id, and keep the ride_id to load the ride detail
+
+1/27:
+(1) Arrival time need to be later than present time
+(2) Max passenger for an order is 10
+(3) Disable corresponding form with different character, including driver, sharer and owner
+(4) After confirmed, no one can change anything except driver can edit completed
+
+1/28:
+(1) Mainpage only show open orders
+(2) Find that if the owner change information, sharer need to be informed. So we remove sharer if owner change destination and arrival time
+(3) Check the maximum number of the passenger is 10, and if exceed after sharer or owner edit the number, message shown
+(4) Check all the forms and give corresponding message if input is invalid
+(5) Validation picture to judge whether register user is humanbeing
+
+1/29:
+(1) Found if we use timezone function, the default timezone is UTC. So a function is created to do the convert
+(2) matching the special info and vehicle type. if order have no special, every driver can be matched

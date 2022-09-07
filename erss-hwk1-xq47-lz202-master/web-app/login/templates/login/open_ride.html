@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>open_ride</title>
+</head>
+<body>
+<h1>open_ride</h1>
+<div class="container">
+    <div class="col">
+        <form class="form-openride" action="/user/open_ride/" method="post">
+
+          {% csrf_token %}
+          <h3 class="text-center">welcome open a ride as owner!</h3>
+          {% if message %}
+          <div class="alert alert-warning">{{ message }}</div>
+            {% endif %}
+          <div class="form-group">
+              {{ open_ride_form.destination.label_tag }}
+              {{ open_ride_form.destination}}
+          </div>
+          <div class="form-group">
+              {{ open_ride_form.arrival_time.label_tag }} East time:
+              {{ open_ride_form.arrival_time }}
+          </div>
+          <div class="form-group">
+              {{ open_ride_form.passenger_number.label_tag }} between 1 - 10. If want add 
+              {{ open_ride_form.passenger_number }}
+          </div>
+          <div class="form-group">
+              {{ open_ride_form.is_shared.label_tag }}
+              {{ open_ride_form.is_shared }}
+          </div>
+          <div class="form-group">
+              {{ open_ride_form.special_request.label_tag }}
+              {{ open_ride_form.special_request }}
+          </div>
+          <div class="form-group">
+            {{ open_ride_form.special_vehicle_type.label_tag }}, leave blank or ex: suv,truck,sedan,luxury,minivan
+            {{ open_ride_form.special_vehicle_type }}
+        </div>
+        
+          <div>
+              <button type="submit" class="btn btn-primary float-right">OK</button>
+          </div>
+        </form>
+        <a href="/user/">return to mainpage</a>&nbsp;&nbsp;
+    </div>
+</div> <!-- /container -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
